@@ -58,4 +58,17 @@ code {
 
 .mainContent {
   margin-top: 4.1rem;
+  width:100%;
+}
+.main {
+  position: relative;
+  width: 100%;
+}
+.main>div{
+  position: absolute;
+  width: 100%;
+}
+.card-img-top {
+  width:15rem;
+  height:auto;
 }

@@ -1,5 +1,5 @@
 .friends {
-    width:70rem ;
+    width: 70rem;
     display: flex;
     flex-wrap: wrap;
 }
@@ -11,15 +11,14 @@
     border: 1px solid red;
     padding: 20px 50px;
     margin-left: 15px;
-   
-    
 }
-.pName{
+
+.pName {
     color: red;
     font-weight: 500;
 }
-.spanName{
-    color:black;
+
+.spanName {
+    color: black;
     font-weight: 400;
 }
-

@@ -1,8 +1,8 @@
 import React from 'react';
 import Nav from './components/nav';
 import Aside from './components/aside';
-import { Route, Switch, Redirect } from 'react-router-dom';
-
+import { Route, Redirect } from 'react-router-dom';
+import { AnimatedSwitch } from 'react-router-transition';
 //pages
 import About from './pages/about';
 import ContactUs from './pages/contactus';
@@ -62,6 +62,7 @@ const data = {
       id: 2,
       title: "qui est esse",
       body: "est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla",
+      
     },
     {
       id: 3,
@@ -79,72 +80,91 @@ const data = {
       body: "repudiandae veniam quaerat sunt sed alias aut fugiat sit autem sed est voluptatem omnis possimus esse voluptatibus quis est aut tenetur dolor neque",
     }
   ],
-  friends:[
-    
-      {
-        id: 1,
-        name: "Leanne Graham",
-        username: "Bret",
-        email: "Sincere@april.biz",
-        address: "Gwenborough",
-      },
-      {
-        id: 2,
-        name: "Ervin Howell",
-        username: "Antonette",
-        email: "Shanna@melissa.tv",
-        address:"Wisokyburgh",
-      },
-      {
-        id: 3,
-        name: "Clementine Bauch",
-        username: "Samantha",
-        email: "Nathan@yesenia.net",
-        address:"Suite 847", 
-        },
-      {
-        id: 4,
-        name: "Patricia Lebsack",
-        username: "Karianne",
-        email: "Julianne.OConner@kory.org",
-        address:  "South Elvis",
-        },
-      {
-        id: 5,
-        name: "Chelsey Dietrich",
-        username: "Kamren",
-        email: "Lucio_Hettinger@annie.ca",
-        address: "Roscoeview",
-      },
-      {
-        id: 6,
-        name: "Mrs. Dennis Schulist",
-        username: "Leopoldo_Corkery",
-        email: "Karley_Dach@jasper.info",
-        address: "Apt. 950",
-      }
+  friends: [
+
+    {
+      id: 1,
+      name: "Leanne Graham",
+      username: "Bret",
+      email: "Sincere@april.biz",
+      address: "Gwenborough",
+      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+    },
+    {
+      id: 2,
+      name: "Ervin Howell",
+      username: "Antonette",
+      email: "Shanna@melissa.tv",
+      address: "Wisokyburgh",
+      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+    },
+    {
+      id: 3,
+      name: "Clementine Bauch",
+      username: "Samantha",
+      email: "Nathan@yesenia.net",
+      address: "Suite 847",
+      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+    },
+    {
+      id: 4,
+      name: "Patricia Lebsack",
+      username: "Karianne",
+      email: "Julianne.OConner@kory.org",
+      address: "South Elvis",
+      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+    },
+    {
+      id: 5,
+      name: "Chelsey Dietrich",
+      username: "Kamren",
+      email: "Lucio_Hettinger@annie.ca",
+      address: "Roscoeview",
+      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+    },
+    {
+      id: 6,
+      name: "Mrs. Dennis Schulist",
+      username: "Leopoldo_Corkery",
+      email: "Karley_Dach@jasper.info",
+      address: "Apt. 950",
+      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+    }
   ]
 }
 
 
 class App extends React.Component {
   constructor(props) {
+    console.log('Constructor');
     super(props);
     this.toggleAsideOpen = this.toggleAsideOpen.bind(this)
   }
   state = {
     asideIsOpen: false,
     isPostsAccess: false,
-    isFriendAccess:false
+    isFriendAccess: false
+  }
+  static getDerivedStateFromProps(nextProps, nextState) {
+    // console.log('next ' + nextState.isFriendAccess);
+    // console.log('getDerivedStateFromProps');
+    return null;
   }
 
+
   render() {
+    console.log('Render')
     return (
       <div className="App">
         <Nav toggleAsideOpen={this.toggleAsideOpen} navItems={data.navItems} />
         <Aside asideIsOpen={this.state.asideIsOpen} />
         <div className="mainContent">
-          <Switch>
+          <AnimatedSwitch
+            atEnter={{ opacity: 0 }}
+            atLeave={{ opacity: 0 }}
+            atActive={{ opacity: 1 }}
+            className="main"
+          >
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/contactus" component={ContactUs} />
@@ -158,21 +178,52 @@ class App extends React.Component {
               />}
             />
             <Route path="/friends"
-            render={(props)=> <Friends {...props}
-            friends={data.friends}
-            isFriendAccess={this.state.isFriendAccess}
+              render={(props) => <Friends {...props}
+                friends={data.friends}
+                isFriendAccess={this.state.isFriendAccess}
                 toggleFriendAccess={this.toggleFriendAccess}
-         /> }
-         />
+              />}
+            />
 
             <Redirect to="/" from="*" />
-          </Switch>
+          </AnimatedSwitch>
         </div>
 
       </div>
     )
   }
+  componentDidMount() {
+    console.log('Component Did MOunt');
+  }
 
+
+  // static getDerivedStateFromProps
+
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate');
+    console.log('previous ' + nextState.isFriendAccess);
+    if (nextState.isFriendAccess === this.state.isFriendAccess) {
+      return false;
+    }
+
+    return true;
+  }
+  //rendeer
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('getSnapshotBeforeUpdate');
+    const x = {
+      name:'Ashot'
+    }
+    return x.name;
+
+  }
+
+  componentDidUpdate(nextProps ,nextState  ,snapshot) {
+    console.log('snap = ' + snapshot);
+    console.log('Did Update');
+  }
 
   toggleAsideOpen() {
     this.setState(prevState => ({
