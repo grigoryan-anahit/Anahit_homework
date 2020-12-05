@@ -12,7 +12,7 @@ const Friends=(props)=>{
     })
     return (
          <div>
-             <h1>Friends</h1>
+             <h1>Friends Page With Ashot</h1>
              <button onClick={props.toggleFriendAccess}>toggle Open</button>
             <div className={style.friends}>
                 {props.isFriendAccess &&  friendJsx}
