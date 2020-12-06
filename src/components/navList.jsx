@@ -16,7 +16,7 @@ const NavList = ({ navItems }) => {
     })
 
     return (
-        <ul className="nav_list" style={{ listStyle: 'none', display: 'flex' }}>
+        <ul style={{ listStyle: 'none', display: 'flex' }}>
             {navItemsJsx}
         </ul>
     )

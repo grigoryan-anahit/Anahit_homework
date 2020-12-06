@@ -1,19 +1,31 @@
 import style from './posts.module.css';
+import { Jumbotron, Container } from 'reactstrap';
+import { ButtonToggle } from "reactstrap";
+
 
 const Posts = (props) => {
     const posts = props.posts;
     const postsJsx = posts.map(post => {
-        return <div key={post.id} className={style.post}>
-            <p className={style.title}>{post.title}</p>
-            <p>{post.body}</p>
+        return <div key={post.id} >
+             <Jumbotron fluid>
+        <Container fluid>
+            <img src={post.img}  style={{width:'100px',height:'100px'}} />
+    <h1 className="display-3">{post.title}</h1>
+          <p className="lead">{post.body}</p>
+        </Container>
+      </Jumbotron>
+  
+
+           
         </div>
     })
   
 
     return (
-        <div >
+        <div className="post_main" >
             <h1>Posts</h1>
-            <button onClick={props.togglePostAccess}>toggle Open</button>
+            <ButtonToggle color="primary" onClick={props.togglePostAccess}>toggle Open</ButtonToggle>{' '}
+            
             <div className={style.posts}>
                 {props.isPostsAccess && postsJsx}
             </div>

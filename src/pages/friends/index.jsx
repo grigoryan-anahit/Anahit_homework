@@ -1,4 +1,4 @@
-import style from './friends.module.css';
+import { ButtonToggle } from "reactstrap";
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
@@ -10,10 +10,10 @@ const Friends = (props) => {
             <Card>
                 <CardImg top src={friend.img} alt="Avatar" />
                 <CardBody>
-                    <CardTitle tag="h5">Name: <span className={style.spanName}>{friend.name}</span></CardTitle>
-                    <CardSubtitle tag="h6" className="mb-2 text-muted">Username: <span className={style.spanName}>{friend.username}</span></CardSubtitle>
-                    <CardSubtitle tag="h6" className="mb-2 text-muted">Address: <span className={style.spanName}>{friend.address}</span> </CardSubtitle>
-                    <CardText>Email: <span className={style.spanName}>{friend.email}</span></CardText>
+                    <CardTitle tag="h5">Name: {friend.name}</CardTitle>
+                    <CardSubtitle tag="h6" className="mb-2 text-muted">Username: {friend.username}</CardSubtitle>
+                    <CardSubtitle tag="h6" className="mb-2 text-muted">Address: {friend.address} </CardSubtitle>
+                    <CardText>Email: {friend.email}</CardText>
                     <Button>Button</Button>
                 </CardBody>
             </Card>
@@ -22,10 +22,11 @@ const Friends = (props) => {
 
     })
     return (
-        <div>
-            <h1>Friends Page With Ashot</h1>
-            <button onClick={props.toggleFriendAccess}>toggle Open</button>
-            <div className={style.friends}>
+        <div className="main_friends_div">
+            <h1 >Friends Page With Ashot</h1>
+            <ButtonToggle color="success"onClick={props.toggleFriendAccess}> Open friends list</ButtonToggle>{' '}
+           
+            <div className="friends">
                 {props.isFriendAccess && friendJsx}
             </div>
         </div>

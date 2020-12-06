@@ -16,16 +16,20 @@ code {
 }
 .App{
   display: flex;
+  
 }
 .nav {
   background-color: #00FFF1;
   width: 100%;
   display: flex;
+  align-items: center;
   position: fixed;
   top:0;
   left:0;
 }
 .nav_item {
+  display: flex;
+  align-items: center;
   margin-left: 15px;
 }
 .nav_link.navActive {
@@ -57,18 +61,34 @@ code {
 }
 
 .mainContent {
-  margin-top: 4.1rem;
-  width:100%;
+  margin-top:4.1rem;
+ width: 100%;
+  padding: 0;
 }
-.main {
-  position: relative;
-  width: 100%;
+
+.post_main{
+  width: max-content;
+  margin-top: 5rem;
 }
-.main>div{
-  position: absolute;
-  width: 100%;
+.friends {
+  width: 60rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 4.5rem;
+  
+}
+.main_friends_div{
+  width: 60%;
+  margin-top: 5rem;
 }
 .card-img-top {
   width:15rem;
   height:auto;
+  
+}
+.card{
+  position: static;
+  margin-top: 10px;
+  width: 18rem;
+  align-items: center;
 }
