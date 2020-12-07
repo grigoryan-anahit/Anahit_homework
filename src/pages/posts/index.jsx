@@ -9,7 +9,7 @@ const Posts = (props) => {
         return <div key={post.id} >
              <Jumbotron fluid>
         <Container fluid>
-            <img src={post.img}  style={{width:'100px',height:'100px'}} />
+            <img src={post.img}  style={{width:'100px',height:'100px'}} alt ="postImage" />
     <h1 className="display-3">{post.title}</h1>
           <p className="lead">{post.body}</p>
         </Container>

@@ -23,7 +23,7 @@ const Friends = (props) => {
     })
     return (
         <div className="main_friends_div">
-            <h1 >Friends Page With Ashot</h1>
+            <h1 >Friends Page</h1>
             <ButtonToggle color="success"onClick={props.toggleFriendAccess}> Open friends list</ButtonToggle>{' '}
            
             <div className="friends">
