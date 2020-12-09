@@ -14,6 +14,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+*{
+  box-sizing: border-box;
+}
 .App{
   display: flex;
   
@@ -26,6 +29,7 @@ code {
   position: fixed;
   top:0;
   left:0;
+  z-index: 1;
 }
 .nav_item {
   display: flex;
@@ -43,6 +47,10 @@ code {
 .nav_link:hover{
   color:red
 }
+ul{
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .navbar_brand {
   cursor: pointer;
   width:60px;
@@ -55,23 +63,26 @@ code {
   transition: 1s;
   transform: translate(0);
   margin-top:4.3rem;
+  position: absolute;
+  z-index: 2;
 }
 .aside.hidden{
   transform: translate(-100%);
 }
 
 .mainContent {
-  margin-top:4.1rem;
- width: 100%;
+  margin: 4.1rem 2rem 0 2rem;
+
+  width: 100%;
   padding: 0;
  
 }
 .main{
- 
+ position: relative;
   width: 100%;
 }
 .main>div{
-  
+  position: absolute;
   width: 100%;
 }
 .post_main{
@@ -80,18 +91,14 @@ code {
 
 }
 .friends {
-  width: 60rem;
+
   display: flex;
   flex-wrap: wrap;
   margin-top: 4.1rem;
 
   
 }
-.main_friends_div{
-  width: 60%;
-  margin-top: 5rem;
   
-}
 .card-img-top {
   width:15rem;
   height:auto;
@@ -103,3 +110,4 @@ code {
   width: 18rem;
   align-items: center;
 }
+

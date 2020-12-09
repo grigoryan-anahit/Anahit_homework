@@ -141,7 +141,6 @@ const data = {
 
 class App extends React.Component {
   constructor(props) {
-    console.log('Constructor');
     super(props);
     this.toggleAsideOpen = this.toggleAsideOpen.bind(this)
   }
@@ -158,7 +157,7 @@ class App extends React.Component {
 
 
   render() {
-    console.log('Render')
+    
     return (
       <div className="App">
         <Nav toggleAsideOpen={this.toggleAsideOpen} navItems={data.navItems} />

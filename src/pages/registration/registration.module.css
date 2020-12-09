@@ -1,0 +1,8 @@
+form,h1{
+    margin: 2% 30% 0 30%;
+}
+.errorText{
+    color: red;
+    background-color: red;
+    padding: 7px 50px;;
+}
