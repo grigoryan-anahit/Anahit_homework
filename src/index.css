@@ -64,23 +64,33 @@ code {
   margin-top:4.1rem;
  width: 100%;
   padding: 0;
+ 
 }
-
-
+.main{
+ 
+  width: 100%;
+}
+.main>div{
+  
+  width: 100%;
+}
 .post_main{
   width: max-content;
-  margin-top: 5rem;
+  margin-top:4.1 rem;
+
 }
 .friends {
   width: 60rem;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 4.5rem;
+  margin-top: 4.1rem;
+
   
 }
 .main_friends_div{
   width: 60%;
   margin-top: 5rem;
+  
 }
 .card-img-top {
   width:15rem;
