@@ -2,7 +2,7 @@ form,h1{
     margin: 2% 30% 0 30%;
 }
 .errorText{
-    color: red;
-    background-color: red;
+    color: rgba(255,0,0);
+
     padding: 7px 50px;;
 }
