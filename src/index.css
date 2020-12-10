@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -27,6 +30,7 @@ code {
   display: flex;
   align-items: center;
   position: fixed;
+  z-index:1;
   top:0;
   left:0;
   z-index: 1;
@@ -64,15 +68,23 @@ ul{
   transform: translate(0);
   margin-top:4.3rem;
   position: absolute;
+<<<<<<< HEAD
   z-index: 2;
+=======
+  z-index:2;
+>>>>>>> a7cffb462632d86be5a908be40f8e79e82ed4aa7
 }
 .aside.hidden{
   transform: translate(-100%);
 }
 
 .mainContent {
+<<<<<<< HEAD
   margin: 4.1rem 2rem 0 2rem;
 
+=======
+  margin-top:4.1rem;
+>>>>>>> a7cffb462632d86be5a908be40f8e79e82ed4aa7
   width: 100%;
   padding: 0;
  
@@ -85,6 +97,19 @@ ul{
   position: absolute;
   width: 100%;
 }
+<<<<<<< HEAD
+=======
+.main {
+  position: relative;
+  width:100%;
+}
+.main>div{
+  position: absolute;
+  width:100%;
+}
+
+
+>>>>>>> a7cffb462632d86be5a908be40f8e79e82ed4aa7
 .post_main{
   width: max-content;
   margin-top:4.1 rem;
@@ -98,7 +123,14 @@ ul{
 
   
 }
+<<<<<<< HEAD
   
+=======
+.main_friends_div{
+
+  margin-top: 5rem;
+}
+>>>>>>> a7cffb462632d86be5a908be40f8e79e82ed4aa7
 .card-img-top {
   width:15rem;
   height:auto;
