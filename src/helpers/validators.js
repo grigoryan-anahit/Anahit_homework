@@ -9,7 +9,7 @@ export const hasSuchUser = (email) => {
     if (users && users.length) {
         const candidate = users.find(user => user.email === email);
         if (candidate)
-            return true;
+            return candidate;
         else
             return false;
     } else {

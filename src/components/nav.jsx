@@ -10,7 +10,7 @@ const Nav = (props) => {
             <div className="navbar_brand" onClick={props.toggleAsideOpen}>
                 <img src={logo} alt={imgAlt} />
             </div>
-            <NavList navItems={props.navItems} />
+            <NavList navItems={props.navItems} setIsAuth={props.setIsAuth} isAuth={props.isAuth}/>
         </nav>
     )
 }

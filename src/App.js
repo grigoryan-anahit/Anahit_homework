@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from './components/nav';
 import Aside from './components/aside';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect,withRouter ,Switch} from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 //pages
 import About from './pages/about';
@@ -147,7 +147,8 @@ class App extends React.Component {
   state = {
     asideIsOpen: false,
     isPostsAccess: false,
-    isFriendAccess: false
+    isFriendAccess: false,
+    isAuth: JSON.parse(localStorage.getItem('isAuth')) || false
   }
   // static getDerivedStateFromProps(nextProps, nextState) {
   //   // console.log('next ' + nextState.isFriendAccess);
@@ -160,19 +161,14 @@ class App extends React.Component {
     
     return (
       <div className="App">
-        <Nav toggleAsideOpen={this.toggleAsideOpen} navItems={data.navItems} />
+        <Nav toggleAsideOpen={this.toggleAsideOpen} navItems={data.navItems} setIsAuth={this.setIsAuth} isAuth={this.state.isAuth} />
         <Aside asideIsOpen={this.state.asideIsOpen} />
         <div className="mainContent">
-          <AnimatedSwitch
-            atEnter={{ opacity: 0 }}
-            atLeave={{ opacity: 0 }}
-            atActive={{ opacity: 1 }}
-            className="main"
-          >
+         <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/contactus" component={ContactUs} />
-            <Route path="/login" component={Login} />
+            <Route path="/login" render={(props) => <Login {...props} setIsAuth={this.setIsAuth} />} />
             <Route path="/registration" component={Registration} />
             <Route path="/posts"
               render={(props) => <Posts {...props}
@@ -190,7 +186,7 @@ class App extends React.Component {
             />
 
             <Redirect to="/" from="*" />
-          </AnimatedSwitch>
+          </Switch>
         </div>
 
       </div>
@@ -229,6 +225,15 @@ class App extends React.Component {
   //   console.log('Did Update');
   // }
 
+  setIsAuth = (isAuth = false) => {
+    const {history} = this.props;
+    localStorage.setItem('isAuth', isAuth);
+    if (!isAuth)
+    history.push('/login')
+      
+    this.setState({ ...this.state, isAuth: isAuth })
+  }
+
   toggleAsideOpen() {
     this.setState(prevState => ({
       ...prevState,
@@ -251,6 +256,6 @@ class App extends React.Component {
 
 }
 
-export default App;
+export default withRouter(App);
 
 

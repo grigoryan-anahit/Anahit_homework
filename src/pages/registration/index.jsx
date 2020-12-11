@@ -72,6 +72,7 @@ class Registration extends React.Component {
         )
     }
     handleOnClick = (event) => {
+        const {history}=this.props;
         if (isAllValid(this.state)) {
             let users = JSON.parse(localStorage.getItem('users'));
             const obj = {
@@ -88,6 +89,7 @@ class Registration extends React.Component {
                 users.push(obj)
                 localStorage.setItem('users', JSON.stringify(users))
             }
+            history.push('/login');
 
         } else {
             console.log('Errror');
@@ -157,6 +159,7 @@ class Registration extends React.Component {
             }
         }))
     }
+
 
 }
 
