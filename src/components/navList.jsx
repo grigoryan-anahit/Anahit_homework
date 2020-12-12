@@ -5,7 +5,7 @@ const NavList = ({ navItems, isAuth, setIsAuth }) => {
 
 
     const navItemsJsx = navItems.map(item => {
-        if (!isAuth && (item.content ==='Posts' || item.content === 'Friends')) {
+        if (!isAuth && (item.content === 'Posts' || item.content === 'Friends')) {
             return null;
         }
         else if (isAuth && (item.content === 'Login' || item.content === 'Registration')) {
@@ -27,9 +27,12 @@ const NavList = ({ navItems, isAuth, setIsAuth }) => {
     return (
         <ul style={{ listStyle: 'none', display: 'flex' }}>
             {navItemsJsx}
-            <li className="nav_item">
-                <button className="btn" onClick={(e) => setIsAuth(false)} >LogOut </button>
-            </li>
+            {
+                isAuth && <li className="nav_item">
+                    <button className="btn" onClick={(e) => setIsAuth(false)} >LogOut </button>
+                </li>
+            }
+
         </ul>
     )
 }

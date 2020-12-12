@@ -73,6 +73,7 @@ class Registration extends React.Component {
     }
     handleOnClick = (event) => {
         const {history}=this.props;
+ 
         if (isAllValid(this.state)) {
             let users = JSON.parse(localStorage.getItem('users'));
             const obj = {
@@ -98,12 +99,13 @@ class Registration extends React.Component {
     }
     handleOnChange = (event) => {
         event.persist();
-        const { name, value } = event.target;
+        const {  value } = event.target;
+        const inputNameTarget = event.target.name;
         let isValid = false;
         let error = '';
 
         //validation
-        switch (name) {
+        switch (inputNameTarget) {
             case 'name': {
                 if (maxLength15(value) && minLength5(value)) {
                     isValid = true;
@@ -151,7 +153,7 @@ class Registration extends React.Component {
         }
         this.setState(prevState => ({
             ...prevState,
-            [name]: {
+            [inputNameTarget]: {
                 value: value,
                 isValid: isValid,
                 isTouched: true,

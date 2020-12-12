@@ -1,8 +1,8 @@
 import React from 'react';
 import Nav from './components/nav';
 import Aside from './components/aside';
-import { Route, Redirect,withRouter ,Switch} from 'react-router-dom';
-import { AnimatedSwitch } from 'react-router-transition';
+import { Route, Redirect, withRouter, Switch } from 'react-router-dom';
+import PrivateRoute from './security/privateRout';
 //pages
 import About from './pages/about';
 import ContactUs from './pages/contactus';
@@ -11,6 +11,7 @@ import Registration from './pages/registration';
 import Posts from './pages/posts';
 import Home from './pages/home';
 import Friends from './pages/friends';
+import Count from './pages/count';
 
 //local data
 const data = {
@@ -49,6 +50,11 @@ const data = {
       id: 7,
       href: '/friends',
       content: 'Friends'
+    },
+    {
+      id:8,
+      href:'/count',
+      content:'Count'
     }
 
   ],
@@ -57,31 +63,31 @@ const data = {
       id: 1,
       title: "Serj Sargsyani Harcazruycy",
       body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
-      img:'https://upload.wikimedia.org/wikipedia/commons/a/a4/Serj1.jpg'
+      img: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Serj1.jpg'
     },
     {
       id: 2,
       title: "qui est esse",
       body: "est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla",
-      img:'https://auto.am/static/offers/2528599/s-41d057d239e974ba77f508d241527216.jpg'
+      img: 'https://auto.am/static/offers/2528599/s-41d057d239e974ba77f508d241527216.jpg'
     },
     {
       id: 3,
       title: "Nikol Heracir",
       body: "et iusto sed quo iure voluptatem occaecati omnis eligendi aut ad voluptatem doloribus vel accusantium quis pariatur molestiae porro eius odio et labore et velit aut",
-      img:'https://www.arminfo.info/mcgallery/20191113075151.jpg'
+      img: 'https://www.arminfo.info/mcgallery/20191113075151.jpg'
     },
     {
       id: 4,
       title: "eum et est occaecati",
       body: "ullam et saepe reiciendis voluptatem adipisci sit amet autem assumenda provident rerum culpa quis hic commodi nesciunt rem tenetur doloremque ipsam iure quis sunt voluptatem rerum illo velit",
-      img:'https://ru.meteocast.net/tpl/images/meteocast_sun_and_cloud.gif'
+      img: 'https://ru.meteocast.net/tpl/images/meteocast_sun_and_cloud.gif'
     },
     {
       id: 5,
       title: "nesciunt quas odio",
       body: "repudiandae veniam quaerat sunt sed alias aut fugiat sit autem sed est voluptatem omnis possimus esse voluptatibus quis est aut tenetur dolor neque",
-      img:'https://expert.ru/data/public/557273/557300/29-oktyabrya-pogoda.jpg'
+      img: 'https://expert.ru/data/public/557273/557300/29-oktyabrya-pogoda.jpg'
     }
 
   ],
@@ -93,7 +99,7 @@ const data = {
       username: "Bret",
       email: "Sincere@april.biz",
       address: "Gwenborough",
-      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+      img: 'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
     },
     {
       id: 2,
@@ -101,7 +107,7 @@ const data = {
       username: "Antonette",
       email: "Shanna@melissa.tv",
       address: "Wisokyburgh",
-      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+      img: 'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
     },
     {
       id: 3,
@@ -109,7 +115,7 @@ const data = {
       username: "Samantha",
       email: "Nathan@yesenia.net",
       address: "Suite 847",
-      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+      img: 'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
     },
     {
       id: 4,
@@ -117,7 +123,7 @@ const data = {
       username: "Karianne",
       email: "Julianne.OConner@kory.org",
       address: "South Elvis",
-      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+      img: 'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
     },
     {
       id: 5,
@@ -125,7 +131,7 @@ const data = {
       username: "Kamren",
       email: "Lucio_Hettinger@annie.ca",
       address: "Roscoeview",
-      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+      img: 'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
     },
     {
       id: 6,
@@ -133,7 +139,7 @@ const data = {
       username: "Leopoldo_Corkery",
       email: "Karley_Dach@jasper.info",
       address: "Apt. 950",
-      img:'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
+      img: 'https://scontent.fevn6-1.fna.fbcdn.net/v/t1.0-9/129276836_3511697165585055_2515850825243186322_o.jpg?_nc_cat=108&ccb=2&_nc_sid=09cbfe&_nc_ohc=s7_FFJWX_dMAX8RSc_J&_nc_ht=scontent.fevn6-1.fna&oh=91fa9bff16abf40acc7ffa8910abed23&oe=5FF1DD4B'
     }
   ]
 }
@@ -158,26 +164,29 @@ class App extends React.Component {
 
 
   render() {
-    
+
     return (
       <div className="App">
         <Nav toggleAsideOpen={this.toggleAsideOpen} navItems={data.navItems} setIsAuth={this.setIsAuth} isAuth={this.state.isAuth} />
         <Aside asideIsOpen={this.state.asideIsOpen} />
         <div className="mainContent">
-         <Switch>
+          <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/contactus" component={ContactUs} />
             <Route path="/login" render={(props) => <Login {...props} setIsAuth={this.setIsAuth} />} />
             <Route path="/registration" component={Registration} />
-            <Route path="/posts"
+            <Route path="/count" component={Count}/>
+            <PrivateRoute
+              path="/posts"
               render={(props) => <Posts {...props}
                 posts={data.posts}
                 isPostsAccess={this.state.isPostsAccess}
                 togglePostAccess={this.togglePostAccess}
               />}
             />
-            <Route path="/friends"
+            <PrivateRoute 
+            path="/friends"
               render={(props) => <Friends {...props}
                 friends={data.friends}
                 isFriendAccess={this.state.isFriendAccess}
@@ -226,11 +235,13 @@ class App extends React.Component {
   // }
 
   setIsAuth = (isAuth = false) => {
-    const {history} = this.props;
+    const { history } = this.props;
     localStorage.setItem('isAuth', isAuth);
-    if (!isAuth)
-    history.push('/login')
-      
+    if (!isAuth){
+      history.push('/login')
+      localStorage.setItem('activeUser' , JSON.stringify(null))
+    }
+
     this.setState({ ...this.state, isAuth: isAuth })
   }
 

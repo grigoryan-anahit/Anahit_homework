@@ -83,13 +83,13 @@ class Login extends React.Component {
     
     }
     handleOnClick=(event)=>{  
-        console.log(this.props);
         let globalError = null;
         const {history}  = this.props;
         const user = hasSuchUser(this.state.email.value)
         if (user) {
 
             if (user.password === this.state.password.value) {
+                localStorage.setItem('activeUser' , JSON.stringify(user));
                 this.props.setIsAuth(true);
                 history.push('/');
             } else {
