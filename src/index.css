@@ -114,4 +114,18 @@ ul{
   width: 18rem;
   align-items: center;
 }
+.clients{
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 100px auto;
+}
+.preloader {
+  width: 100px;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
 

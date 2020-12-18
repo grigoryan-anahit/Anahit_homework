@@ -12,6 +12,8 @@ import Posts from './pages/posts';
 import Home from './pages/home';
 import Friends from './pages/friends';
 import Count from './pages/count';
+import Clients from './pages/clients';
+import Client from './pages/client';
 
 //local data
 const data = {
@@ -55,6 +57,16 @@ const data = {
       id:8,
       href:'/count',
       content:'Count'
+    },
+    {
+      id:9,
+      href:'/clients',
+      content:'Clients'
+    },
+    {
+       id:10,
+    href:'/client',
+    content:'Client'
     }
 
   ],
@@ -174,8 +186,8 @@ class App extends React.Component {
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/contactus" component={ContactUs} />
-            <Route path="/login" render={(props) => <Login {...props} setIsAuth={this.setIsAuth} />} />
-            <Route path="/registration" component={Registration} />
+            <PrivateRoute path="/login" render={(props) => <Login {...props} setIsAuth={this.setIsAuth} />} />
+            <PrivateRoute path="/registration" component={Registration} />
             <Route path="/count" component={Count}/>
             <PrivateRoute
               path="/posts"
@@ -193,6 +205,8 @@ class App extends React.Component {
                 toggleFriendAccess={this.toggleFriendAccess}
               />}
             />
+            <PrivateRoute path="/clients" component={Clients} />
+            <PrivateRoute path="/client/:id" component={Client} />
 
             <Redirect to="/" from="*" />
           </Switch>
