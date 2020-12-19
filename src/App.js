@@ -63,11 +63,7 @@ const data = {
       href:'/clients',
       content:'Clients'
     },
-    {
-       id:10,
-    href:'/client',
-    content:'Client'
-    }
+    
 
   ],
   posts: [
