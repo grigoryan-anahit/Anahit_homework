@@ -11,7 +11,7 @@ class Client extends React.Component {
         }
         return (
             <div>
-                <h1>{this.state.client.name} page</h1>
+                <h1>{this.state.client.name}'s page</h1>
                 <div className="card" style={{ width: "18rem" }} >
                     <img className="card-img-top" src="https://propsyteen.ru/wp-content/themes/siteseed/css/girl9.png" alt="Card cap" />
                     <div className="card-body">

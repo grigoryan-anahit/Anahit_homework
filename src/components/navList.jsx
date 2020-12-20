@@ -5,7 +5,7 @@ const NavList = ({ navItems, isAuth, setIsAuth }) => {
 
 
     const navItemsJsx = navItems.map(item => {
-        if (!isAuth && (item.content === 'Posts' || item.content === 'Friends')) {
+        if (!isAuth && (item.content === 'Posts' || item.content === 'Friends' || item.content === 'Clients' || item.content === 'Count' )) {
             return null;
         }
         else if (isAuth && (item.content === 'Login' || item.content === 'Registration')) {

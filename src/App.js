@@ -1,19 +1,8 @@
 import React from 'react';
-import Nav from './components/nav';
-import Aside from './components/aside';
-import { Route, Redirect, withRouter, Switch } from 'react-router-dom';
-import PrivateRoute from './security/privateRout';
-//pages
-import About from './pages/about';
-import ContactUs from './pages/contactus';
-import Login from './pages/login';
-import Registration from './pages/registration';
-import Posts from './pages/posts';
-import Home from './pages/home';
-import Friends from './pages/friends';
-import Count from './pages/count';
-import Clients from './pages/clients';
-import Client from './pages/client';
+import withScreenSizes from './hoc/withScreenSizes';
+import Web from './versions/web';
+import { withRouter } from 'react-router-dom';
+
 
 //local data
 const data = {
@@ -172,44 +161,21 @@ class App extends React.Component {
 
 
   render() {
-
-    return (
-      <div className="App">
-        <Nav toggleAsideOpen={this.toggleAsideOpen} navItems={data.navItems} setIsAuth={this.setIsAuth} isAuth={this.state.isAuth} />
-        <Aside asideIsOpen={this.state.asideIsOpen} />
-        <div className="mainContent">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/contactus" component={ContactUs} />
-            <PrivateRoute path="/login" render={(props) => <Login {...props} setIsAuth={this.setIsAuth} />} />
-            <PrivateRoute path="/registration" component={Registration} />
-            <Route path="/count" component={Count}/>
-            <PrivateRoute
-              path="/posts"
-              render={(props) => <Posts {...props}
-                posts={data.posts}
-                isPostsAccess={this.state.isPostsAccess}
-                togglePostAccess={this.togglePostAccess}
-              />}
-            />
-            <PrivateRoute 
-            path="/friends"
-              render={(props) => <Friends {...props}
-                friends={data.friends}
-                isFriendAccess={this.state.isFriendAccess}
-                toggleFriendAccess={this.toggleFriendAccess}
-              />}
-            />
-            <PrivateRoute path="/clients" component={Clients} />
-            <PrivateRoute path="/client/:id" component={Client} />
-
-            <Redirect to="/" from="*" />
-          </Switch>
-        </div>
-
+    const width = this.props.width;
+    if (width <= 1280)
+      return <div>
+        Width = 1280
       </div>
-    )
+
+    return   <Web 
+    data={data} 
+    state={this.state}
+    toggleAsideOpen = {this.toggleAsideOpen}
+    togglePostAccess ={this.togglePostAccess}
+    toggleFriendAccess ={this.toggleFriendAccess}
+    setIsAuth ={this.setIsAuth}
+    />
+ 
   }
   // componentDidMount() {
   //   console.log('Component Did MOunt');
@@ -277,6 +243,6 @@ class App extends React.Component {
 
 }
 
-export default withRouter(App);
+export default withScreenSizes(withRouter(App));
 
 

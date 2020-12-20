@@ -7,7 +7,7 @@ class Home extends React.Component {
         return (
             <div>
                 <h1>Home Page</h1>
-                {user && <p>Profile of  {user.name}</p>   }
+                {user && <p>Welcome {user.name}</p>   }
                 <Link to="/about">to About Page</Link>
             </div>
         )
