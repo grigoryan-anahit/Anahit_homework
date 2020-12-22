@@ -55,39 +55,7 @@ const data = {
     
 
   ],
-  posts: [
-    {
-      id: 1,
-      title: "Serj Sargsyani Harcazruycy",
-      body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
-      img: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Serj1.jpg'
-    },
-    {
-      id: 2,
-      title: "qui est esse",
-      body: "est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla",
-      img: 'https://auto.am/static/offers/2528599/s-41d057d239e974ba77f508d241527216.jpg'
-    },
-    {
-      id: 3,
-      title: "Nikol Heracir",
-      body: "et iusto sed quo iure voluptatem occaecati omnis eligendi aut ad voluptatem doloribus vel accusantium quis pariatur molestiae porro eius odio et labore et velit aut",
-      img: 'https://www.arminfo.info/mcgallery/20191113075151.jpg'
-    },
-    {
-      id: 4,
-      title: "eum et est occaecati",
-      body: "ullam et saepe reiciendis voluptatem adipisci sit amet autem assumenda provident rerum culpa quis hic commodi nesciunt rem tenetur doloremque ipsam iure quis sunt voluptatem rerum illo velit",
-      img: 'https://ru.meteocast.net/tpl/images/meteocast_sun_and_cloud.gif'
-    },
-    {
-      id: 5,
-      title: "nesciunt quas odio",
-      body: "repudiandae veniam quaerat sunt sed alias aut fugiat sit autem sed est voluptatem omnis possimus esse voluptatibus quis est aut tenetur dolor neque",
-      img: 'https://expert.ru/data/public/557273/557300/29-oktyabrya-pogoda.jpg'
-    }
 
-  ],
   friends: [
 
     {
@@ -151,7 +119,40 @@ class App extends React.Component {
     asideIsOpen: false,
     isPostsAccess: false,
     isFriendAccess: false,
-    isAuth: JSON.parse(localStorage.getItem('isAuth')) || false
+    isAuth: JSON.parse(localStorage.getItem('isAuth')) || false,
+    posts: [
+      {
+        id: 1,
+        title: "Serj Sargsyani Harcazruycy",
+        body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+        img: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Serj1.jpg'
+      },
+      {
+        id: 2,
+        title: "qui est esse",
+        body: "est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla",
+        img: 'https://auto.am/static/offers/2528599/s-41d057d239e974ba77f508d241527216.jpg'
+      },
+      {
+        id: 3,
+        title: "Nikol Heracir",
+        body: "et iusto sed quo iure voluptatem occaecati omnis eligendi aut ad voluptatem doloribus vel accusantium quis pariatur molestiae porro eius odio et labore et velit aut",
+        img: 'https://www.arminfo.info/mcgallery/20191113075151.jpg'
+      },
+      {
+        id: 4,
+        title: "eum et est occaecati",
+        body: "ullam et saepe reiciendis voluptatem adipisci sit amet autem assumenda provident rerum culpa quis hic commodi nesciunt rem tenetur doloremque ipsam iure quis sunt voluptatem rerum illo velit",
+        img: 'https://ru.meteocast.net/tpl/images/meteocast_sun_and_cloud.gif'
+      },
+      {
+        id: 5,
+        title: "nesciunt quas odio",
+        body: "repudiandae veniam quaerat sunt sed alias aut fugiat sit autem sed est voluptatem omnis possimus esse voluptatibus quis est aut tenetur dolor neque",
+        img: 'https://expert.ru/data/public/557273/557300/29-oktyabrya-pogoda.jpg'
+      }
+  
+    ],
   }
   // static getDerivedStateFromProps(nextProps, nextState) {
   //   // console.log('next ' + nextState.isFriendAccess);
@@ -174,6 +175,7 @@ class App extends React.Component {
     togglePostAccess ={this.togglePostAccess}
     toggleFriendAccess ={this.toggleFriendAccess}
     setIsAuth ={this.setIsAuth}
+    addNewPost={this.addNewPost}
     />
  
   }
@@ -209,7 +211,28 @@ class App extends React.Component {
   //   console.log('snap = ' + snapshot);
   //   console.log('Did Update');
   // }
-
+  // deleteCurrentPost=(id)=>{
+  //   const posts = [...this.state.posts];
+  //   posts.({
+  //     id:id
+  //   })
+  //   this.setState(prevState => ({
+  //     ...prevState,
+  //     posts
+  //   }))
+  // }
+  addNewPost = (postMessage,title) => {
+    const posts = [...this.state.posts];
+    posts.push({
+      title:title,
+      body:postMessage,
+      id:Date.now() + this.state.posts.length + 1
+    })
+    this.setState(prevState => ({
+      ...prevState,
+      posts
+    }))
+  }
   setIsAuth = (isAuth = false) => {
     const { history } = this.props;
     localStorage.setItem('isAuth', isAuth);

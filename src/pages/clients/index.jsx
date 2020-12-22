@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Preloader from '../../components/preloader';
+import * as axios from 'axios';
 
 class Clients extends React.Component{
   state={
@@ -30,14 +31,18 @@ class Clients extends React.Component{
     )
   }  
   componentDidMount(){
-      (async ()=>{
-          const response=await fetch('https://jsonplaceholder.typicode.com/users');
-          const data=await response.json();
+      axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(response=>{
+          const data=response.data
+      
           this.setState(prevState=>({
-              ...prevState,
+            ...prevState,
             clients:data
           }))
-      }) ()
+         })
+         .catch(error=>{
+             console.log('Request error', error);
+         })
   }
 }
 export default Clients;

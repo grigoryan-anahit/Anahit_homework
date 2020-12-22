@@ -3,6 +3,7 @@ import Nav from '../components/nav';
 import Aside from '../components/aside';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PrivateRoute from '../security/privateRoute';
+import withSuspense from '../hoc/withSuspense';
 //pages
 import About from '../pages/about';
 import ContactUs from '../pages/contactus';
@@ -11,12 +12,12 @@ import Registration from '../pages/registration';
 import Posts from '../pages/posts';
 import Home from '../pages/home';
 import Friends from '../pages/friends';
-import Count from '../pages/count';
 import Clients from '../pages/clients';
 import Client from '../pages/client';
+const Count = React.lazy(() => import('../pages/count'));
 
 
-    const Web = ({data ,state , toggleAsideOpen ,togglePostAccess ,toggleFriendAccess ,setIsAuth}) => {
+    const Web = ({data ,state , toggleAsideOpen ,togglePostAccess ,toggleFriendAccess ,setIsAuth,addNewPost}) => {
         return (
             <div className="App">
                 <Nav toggleAsideOpen={toggleAsideOpen} navItems={data.navItems} setIsAuth={setIsAuth} isAuth={state.isAuth} />
@@ -29,12 +30,14 @@ import Client from '../pages/client';
                         <PrivateRoute path="/login" render={(props) => <Login {...props} setIsAuth={setIsAuth} />} />
                         <PrivateRoute path="/registration" component={Registration} />
                         <PrivateRoute path="/clients" component={Clients} />
-                        <Route path='/count' component={Count} />
+                        <Route path='/count' component={withSuspense(Count)} />
                         <PrivateRoute path="/posts"
                             render={(props) => <Posts {...props}
-                                posts={data.posts}
+                                posts={state.posts}
                                 isPostsAccess={state.isPostsAccess}
                                 togglePostAccess={togglePostAccess}
+                                addNewPost ={addNewPost}
+
                             />}
                         />
                         <PrivateRoute path="/friends"
