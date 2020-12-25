@@ -1,14 +1,24 @@
 .posts {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
-.postDiv{
-    margin-left: 30%;
-    margin-bottom: 5%;
-    width: 50%;
-    height: auto;
+.title{
+    color: red;
 }
-.postBody{
-    margin-top: 20px;
+.post{
+width:20%;
+border:2px solid red;
+margin-left: 20px;
+margin-top: 20px;
 }
+.errorInput{
+   display: flex;
+   flex-direction: column;
+   margin-top: 5px;
 
+}
+.error{
+    color: red;
+}
 

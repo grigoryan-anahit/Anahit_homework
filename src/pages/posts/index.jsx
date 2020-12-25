@@ -1,43 +1,56 @@
-import React from 'react';
 import style from './posts.module.css';
+import React ,{ memo } from 'react';
+import { PostsContext } from '../../context/contexts';
 
-import { ButtonToggle } from "reactstrap";
 
 
-
-class  Posts extends React.Component  {
-    constructor(props){
-          super(props);
-    this.addPostInputRef=React.createRef();
-    }
-    handleAddPost = (event) => {
-
-        const value = this.addPostInputRef.current.value;
-        this.props.addNewPost(value);
-    }
-  render(){
-          const posts = this.props.posts;
-    const postsJsx = posts.map(post => {
-        return <div key={post.id}  className={style.postDiv}>
-    <h1 >{post.title}</h1>
-          <p className={style.postBody}>{post.body}</p>
-       </div>
-    })
+const Posts = () => {
+    
     return (
-        <div className="post_main" >
-            <h1>Posts</h1>
-            <div className="addPostForm">
-            <textarea type="text" placeholder="Type a new post" ref={this.addPostInputRef} />
-            <button onClick={this.handleAddPost}>Post</button>
-        </div>
-            <ButtonToggle color="primary" onClick={this.props.togglePostAccess}>toggle Open</ButtonToggle>{' '}
-            
-            <div className={style.posts}>
-                {this.props.isPostsAccess && postsJsx}
-            </div>
-        </div>
+        <PostsContext.Consumer>
+            {context => {
+
+                const posts = context.state.posts;
+                const formControl = context.state.newPostFormControl;
+                const postsJsx = posts.map(post => {
+                    return <div key={post.id} className={style.post}>
+                        <p className={style.title}>{post.title}</p>
+                        <p>{post.body}</p>
+                    </div>
+                })
+
+                return (
+                    <div>
+                        <h1>Posts</h1>
+                        <div className="addPostForm">
+                            <form>
+                                {formControl.formError &&
+                                    <div>
+                                        <span>{formControl.formError}</span>
+                                    </div>
+                                }
+                                <div className={style.errorInput} >
+                                <span className={style.error}>{context.state.newPostFormControl.title.error}</span>
+                                <input type="text" placeholder="New Post Title" name="title" onChange={context.handleOnChange} />
+                                 </div>
+                                <div className={style.errorInput}>
+                                <span className={style.error}>{context.state.newPostFormControl.body.error}</span>
+                                <input type="text" placeholder="New Post Body" name="body" onChange={context.handleOnChange} />
+                                </div>
+                                <button onClick={context.handleOnSubmit}>Post</button>
+                            </form>
+                        </div>
+                        <button onClick={context.togglePostAccess}>toggle Open</button>
+                        <div className={style.posts}>
+                            {context.state.isPostsAccess && postsJsx}
+                        </div>
+                    </div>
+                )
+            }}
+        </PostsContext.Consumer>
     )
-  }
+
+
 }
 
-export default Posts;
+export default memo(Posts);

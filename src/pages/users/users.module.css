@@ -1,0 +1,25 @@
+.users{
+    display: flex;
+      flex-wrap: wrap;
+} 
+
+.user{
+   width:20rem;
+    border: 1px solid red;
+    padding: 20px 50px;
+    margin-left: 15px;
+    margin-top: 15px;
+   
+}
+.usersButton{
+    width: 150px;
+    height: 50px;
+}
+
+/* .friends {
+    width:70rem ;
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+
