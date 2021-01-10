@@ -11,6 +11,7 @@ import Login from '../pages/login';
 import Registration from '../pages/registration';
 import Posts from '../pages/posts';
 import Home from '../pages/home';
+import Todo from '../pages/todo';
 //import Friends from '../pages/friends';
 import Users from '../pages/users';
 import Clients from '../pages/clients';
@@ -18,6 +19,7 @@ import Client from '../pages/client';
 //providers
 import PostsProvider from '../context/contextProviders/PostsProvider';
 import UsersProviders from '../context/contextUsersProvider/UsersProviders';
+import TodoProvider from '../context/todoProvider/TodoProvider';
 
 const Count = React.lazy(() => import('../pages/count'));
 
@@ -35,26 +37,27 @@ const Web = ({ data, state, toggleAsideOpen, togglePostAccess, toggleFriendAcces
                     <PrivateRoute path="/login" render={(props) => <Login {...props} setIsAuth={setIsAuth} />} />
                     <PrivateRoute path="/registration" component={Registration} />
                     <PrivateRoute path="/clients" component={Clients} />
-                    <UsersProviders>
-                    <Route path="/users" component={Users} />
-                    </UsersProviders>
                     <Route path='/count' component={withSuspense(Count)} />
-                    <PostsProvider>
-                        <PrivateRoute path="/posts" component={Posts} />
-                    </PostsProvider>
-
-                    
-                    {/* <PrivateRoute path="/friends"
-                        render={(props) => <Friends {...props}
-                            friends={data.friends}
-                           // isFriendAccess={state.isFriendAccess}
-                            //toggleFriendAccess={toggleFriendAccess}
-                        />}
-                    /> */}
-               
                     <PrivateRoute path="/client/:id" component={Client} />
+                    <PrivateRoute path="/posts"  >
+                         <PostsProvider>  
+                              <Posts />  
+                         </PostsProvider>
+                    </PrivateRoute>
+                    <PrivateRoute path="/users"  >
+                        <UsersProviders>
+                           <Users />
+                        </UsersProviders>
+                     </PrivateRoute>
 
-                    <Redirect to="/" from="*" />
+                     <PrivateRoute path="/todo"  >
+                         <TodoProvider>  
+                              <Todo />  
+                         </TodoProvider>
+                    </PrivateRoute>
+                
+                    
+                <Redirect to="/" from="*" />
                 </Switch>
             </div>
 

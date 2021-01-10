@@ -1,0 +1,27 @@
+.TodoPage {
+  display:flex;
+  flex-direction: column;
+    width:60%;
+    margin:0 auto;
+ 
+}
+.todoImg{
+    width: 50px;
+    height: auto;
+}
+.todoTable{
+    margin-top: 3rem;
+}
+.todoItem{
+  width: 150px;
+  height: 100px;
+}
+.todoInput{
+    width: 200px;
+    margin-right: 15px;
+}
+.todoForm{
+    width: 100%;
+    margin-left: 0;
+   
+}

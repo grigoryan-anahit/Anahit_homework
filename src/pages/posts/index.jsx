@@ -7,6 +7,7 @@ import { PostsContext } from '../../context/contexts';
 const Posts = () => {
     
     return (
+
         <PostsContext.Consumer>
             {context => {
 

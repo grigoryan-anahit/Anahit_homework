@@ -19,7 +19,7 @@ class Client extends React.Component {
                         <p>{this.state.client.username}</p>
                         <p>{this.state.client.email}</p>
                         <p>{this.state.client.phone}</p>
-                        <p>{this.state.client.address.street}</p>
+                        <p>{this.state.client.address}</p>
 
                     </div>
                 </div>
